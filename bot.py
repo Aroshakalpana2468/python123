@@ -100,6 +100,11 @@ def command3(bot, message):
     bot.send_photo(message.chat.id, "https://images.app.goo.gl/shMpXiY6hz2ARpP9A")
     bot.send_photo(message.chat.id, "https://images.app.goo.gl/i6HTzCEyCWcS5e947")
     
+@bot.on_message(filters.command('gif'))
+def command3(bot, message):
+    bot.send_photo(message.chat.id, "https://telegra.ph/file/55a665782d373369205f1.jpg")
+    bot.send_gif(message.chat.id, "https://te.legra.ph/file/c9e98feda8e73f0f5a08f.mp4")
+    
 
 @bot.on_message(filters.text)
 def delete_text(bot, message):

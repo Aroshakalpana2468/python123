@@ -103,7 +103,7 @@ def command3(bot, message):
 @bot.on_message(filters.command('gif'))
 def command3(bot, message):
     bot.send_photo(message.chat.id, "https://telegra.ph/file/55a665782d373369205f1.jpg")
-    bot.send_gif(message.chat.id, "https://te.legra.ph/file/c9e98feda8e73f0f5a08f.mp4")
+    bot.send_photo(message.chat.id, "https://te.legra.ph/file/c9e98feda8e73f0f5a08f.mp4")
     
 
 @bot.on_message(filters.text)

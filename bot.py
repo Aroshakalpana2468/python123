@@ -1,5 +1,6 @@
 from pyrogram import Client,filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
+import requests
 
 
 bot = Client(
@@ -82,6 +83,22 @@ WELCOME_MESSAGE = "Hello, welcome to group chat!"
 @bot.on_message(filters.chat(GROUP) & filters.new_chat_members)
 def welcomebot(client, message):
     message.reply_text(WELCOME_MESSAGE)
+
+@bot.on_message(filters.command(["logo"]))
+async def logo(_, m : Message):
+    if len(m.command) <2:
+        return await m.reply_text("Please provide a name")
+    else: 
+        try:
+            hee = await m.reply("making your logo...")
+            name = m.text.split(None, 1)[1]
+            req = requests.get(f"https://sd-logo-api.herokuapp.com/?logo={name}")
+            IMG = req.text
+            await hee.delete()
+            await m.reply_photo(IMG) 
+        except Exception as e:
+            await m.reply_text(f"Error: {e}")
+          
 
 #send_photo
 @bot.on_message(filters.command('photo'))

@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 
-MONGO_DB = "mongodb+srv://aroshak:aroshak@cluster0.tdzbz.mongodb.net/cluster0?retryWrites=true&w=majority"
+MONGO_DB = "mongodb+srv://kalpana:kalpana@cluster0.sj96g.mongodb.net/cluster0?retryWrites=true&w=majority"
 
 datab = MongoClient(MONGO_DB)
 maindb = datab["main"]

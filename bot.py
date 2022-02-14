@@ -148,6 +148,7 @@ Groups - {groups}
 def botstats(_, message):
     if not message.reply_to_message :
         message.reply_text("Reply to message to broadcast.")
+        return
     success = 0
     for user in all_users():
       try:

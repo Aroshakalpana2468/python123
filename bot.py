@@ -1,6 +1,6 @@
 from pyrogram import Client,filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
-
+from mongodb import all_users, all_groups
 
 
 bot = Client(
@@ -10,6 +10,8 @@ bot = Client(
     bot_token = "5148488712:AAHahhs2uKE2N7KmgnzfAWLJ2RiVXrsLE0s"
 )
 
+SUDO_ID = "1844047320 1441379756"
+SUDO = [int(x) for x in SUDO_ID.split()]
 START_MESSAGE = "Heya, I am a simple test bot"
 START_MESSAGE_BUTTONS = [
     [
@@ -132,6 +134,28 @@ def leave(bot, message):
 def ban(bot, message):
     bot.kick_chat_member(message.chat.id, message.reply_to_message.from_user.id)
     bot.send_message(message.chat.id, f"{message.reply_to_message.from_user.mention} Banned!")
+
+@bot.on_message(filters.command("stats") & filters.user(SUDO))
+def botstats(_, message):
+    users =len(list(all_users()))
+    groups = all_groups()
+    message.reply_text(f"""
+Users - {users}
+Groups - {groups}
+    """)
+
+@bot.on_message(filters.command("broadcast") & filters.user(SUDO))
+def botstats(_, message):
+    if not message.reply_to_message :
+        message.reply_text("Reply to message to broadcast.")
+    success = 0
+    for user in all_users():
+      try:
+        userid = int(user["user_id"])
+        message.reply_to_message.copy(userid)
+        success += 1
+      except Exception: pass
+    message.reply_text(f"Broadcast Completed\nSuccess  - {success}")
 
 
 print("I AM ALIVE")

@@ -10,7 +10,7 @@ bot = Client(
     bot_token = "5148488712:AAHahhs2uKE2N7KmgnzfAWLJ2RiVXrsLE0s"
 )
 
-SUDO_ID = "1844047320 1441379756"
+SUDO_ID = "1844047320"
 SUDO = [int(x) for x in SUDO_ID.split()]
 START_MESSAGE = "Heya, I am a simple test bot"
 START_MESSAGE_BUTTONS = [

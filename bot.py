@@ -36,7 +36,7 @@ def start(bot, message):
        disable_web_page_preview=True
    )
    if message.chat.type == "private" : add_user(message.from_user.id)
-   if message.chat.type != "private" : add_group(message.chat.id   
+   if message.chat.type != "private" : add_group(message.chat.id)  
         
         
 REPLY_MESSAGE = "choose a button below!"

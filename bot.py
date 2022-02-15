@@ -148,7 +148,7 @@ Groups - {groups}
     """)
 
 @bot.on_message(filters.command("broadcast") & filters.user(SUDO))
-def botstats(_, message):
+def broadcastmsg(_, message):
     if not message.reply_to_message :
         message.reply_text("Reply to message to broadcast.")
         return
